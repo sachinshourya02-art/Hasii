@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Hasii ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #ffd6e8, #e8d9ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.card {
+  width: 90%;
+  max-width: 400px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 30px;
+  padding: 35px 25px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  position: relative;
+  z-index: 2;
+}
+
+.emoji {
+  font-size: 70px;
+  animation: bounce 1.5s infinite;
+}
+
+h1 {
+  color: #ff4f91;
+  margin: 10px 0;
+}
+
+p {
+  color: #555;
+  line-height: 1.7;
+  font-size: 16px;
+}
+
+button {
+  border: none;
+  padding: 14px 25px;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 8px;
+}
+
+.yes {
+  background: #ff5c9d;
+  color: white;
+  box-shadow: 0 5px 15px rgba(255,92,157,.4);
+}
+
+.no {
+  background: #eee;
+  color: #555;
+  position: relative;
+}
+
+.hidden {
+  display: none;
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  font-size: 22px;
+  animation: float 5s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.shake {
+  animation: shake .4s;
+}
+
+@keyframes shake {
+  25% { transform: translateX(-8px); }
+  50% { transform: translateX(8px); }
+  75% { transform: translateX(-8px); }
+}
+
+#final {
+  font-size: 18px;
+  color: #ff4f91;
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="card">
+
+  <div class="emoji">👽</div>
+
+  <h1>Hasiiii... 🥺</h1>
+
+  <p>
+    Waittt... please don't gooo 😭🤌
+  </p>
+
+  <button class="yes" onclick="nextPage()">
+    Okayyy, tell me 🥺
+  </button>
+
+</div>
+
+<script>
+
+let page = 0;
+
+function nextPage() {
+
+  page++;
+
+  const card = document.getElementById("card");
+
+  if(page === 1) {
+
+    card.innerHTML = `
+      <div class="emoji">🥺</div>
+      <h1>I'm sorryyy Hasii ❤️</h1>
+
+      <p>
+      I know I hurt youuu... 😭<br><br>
+
+      I'm very sryy for hurting uuu.<br>
+      I really really didn't mean to hurt you.
+      </p>
+
+      <button class="yes" onclick="nextPage()">
+      Read more 👉👈
+      </button>
+    `;
+  }
+
+  else if(page === 2) {
+
+    card.innerHTML = `
+      <div class="emoji">🤌🥹</div>
+
+      <h1>Promiseee ❤️</h1>
+
+      <p>
+      From now I won't make you feel like hurting reallyyy. 🥺<br><br>
+
+      I promiseee I will try my best
+      to not make you feel that way again. ❤️
+      </p>
+
+      <button class="yes" onclick="nextPage()">
+      One last thing... 🥺
+      </button>
+    `;
+  }
+
+  else if(page === 3) {
+
+    card.innerHTML = `
+      <div class="emoji">😭🤌</div>
+
+      <h1>Hasiiii...</h1>
+
+      <p>
+      Plzzzz unblock meee naaa 🥺🤌❤️
+      </p>
+
+      <p>
+      Alien is missing Hasii badlyyy 😭
+      </p>
+
+      <button class="yes" onclick="forgive()">
+      ❤️ UNBLOCK ME
+      </button>
+
+      <button class="no" id="noBtn" onclick="runAway()">
+      😤 NO
+      </button>
+
+      <p id="hint"></p>
+    `;
+  }
+}
+
+function runAway() {
+
+  const btn = document.getElementById("noBtn");
+  const hint = document.getElementById("hint");
+
+  btn.style.position = "fixed";
+
+  btn.style.left =
+    Math.random() * (window.innerWidth - 100) + "px";
+
+  btn.style.top =
+    Math.random() * (window.innerHeight - 60) + "px";
+
+  hint.innerHTML = "Heheee you can't say nooo 😂🤌";
+}
+
+function forgive() {
+
+  document.getElementById("card").innerHTML = `
+    <div class="emoji">🥹❤️</div>
+
+    <h1>YAYYYYY!!! 🎉</h1>
+
+    <p id="final">
+      Hasii forgave Alien... 🥺❤️
+    </p>
+
+    <p>
+      Thank youuu 😭🤌<br><br>
+
+      I promise I'll be better.<br>
+      No more hurting youuu. ❤️
+    </p>
+
+    <div style="font-size:40px">
+      👽 ❤️ 🥹 ❤️ 👽
+    </div>
+  `;
+
+  for(let i=0;i<40;i++) {
+    setTimeout(createHeart, i*80);
+  }
+}
+
+function createHeart() {
+
+  const heart = document.createElement("div");
+
+  heart.className = "heart";
+
+  const emojis = ["❤️","💗","💕","💖","💘","🥺"];
+
+  heart.innerHTML =
+    emojis[Math.floor(Math.random()*emojis.length)];
+
+  heart.style.left =
+    Math.random()*100 + "vw";
+
+  heart.style.fontSize =
+    (15 + Math.random()*25) + "px";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 5000);
+}
+
+setInterval(createHeart, 700);
+
+</script>
+
+</body>
+</html>
